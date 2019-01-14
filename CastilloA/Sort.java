@@ -250,67 +250,7 @@ public final class Sort
             a[ j ] = tmp;
         }
     }
-    /************************ QUICKSORT2 *******************
-     * Quicksort2 algorithm.
-     * @param a an array of Comparable items.
-     */
-    public static <AnyType extends Comparable<? super AnyType>>
-    void quicksort2( AnyType [ ] a )
-    {
-        quicksort2( a, 0, a.length - 1 );
-    }
-    private static <AnyType extends Comparable<? super AnyType>>
-    AnyType right( AnyType [ ] a, int left, int right )
-    {
-    //compare right pivot to left side and index of right -1. 
-    //Swap if one is smaller than the other.	
-        int rightPos = right;
-        if( a[ rightPos ].compareTo( a[ left] ) < 0 )
-            swapReferences( a, left, rightPos);
-       if( a[ right-1 ].compareTo( a[ rightPos ] ) < 0 )
-            swapReferences( a, right-1, rightPos );
-
-            // Place pivot at position right - 1
-        swapReferences( a, right-1 , rightPos );
-        return a[ right - 1 ];
-    }
-
-    /**
-     * Internal quicksort2 method that makes recursive calls.
-     * Uses right as a partition.
-     * @param a an array of Comparable items.
-     * @param left the left-most index of the subarray.
-     * @param right the right-most index of the subarray.
-     */
-    private static <AnyType extends Comparable<? super AnyType>>
-    void quicksort2( AnyType [ ] a, int left, int right ){
-    	//base cases.
-        if( a == null || a.length == 0 || left >= right)
-        	return;
-        
-        else {
-        	
-            AnyType pivot = right( a, left, right );
-
-                // Begin partitioning
-            int i = left, j = right - 1;
-            for( ; ; )
-            {
-                while( a[ ++i ].compareTo( pivot ) < 0 ) { }
-                while( a[ --j ].compareTo( pivot ) > 0 ) { }
-                if( i < j )
-                    swapReferences( a, i, j );
-                else
-                    break;
-            }
-
-            swapReferences( a, i, right - 1 );   // Restore pivot
-
-            quicksort2( a, left, i - 1 );    // Sort small elements
-            quicksort2( a, i + 1, right );   // Sort large elements
-        }
-    }
-
+  
  
     
 
